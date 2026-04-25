@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kairon Mobility | Aluguel de Carros Elétricos</title>
+  <link rel="icon" type="image/jpeg" href="favicon.jpg">
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <!-- Background video container -->
+  <div class="video-container" id="video-container">
+    <video id="scroll-video" muted playsinline preload="auto">
+      <source src="scroll-video.mp4" type="video/mp4">
+      Seu navegador não suporta a tag de vídeo.
+    </video>
+
+    <!-- Scroll Down Indicator -->
+    <div class="scroll-indicator">
+      <p class="scroll-text">ARRASTE PARA BAIXO</p>
+      <div class="scroll-arrow">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scrollable spacer to give room for animation (500vh) -->
+  <section id="main-content"></section>
+
+  <!-- Kairon Mobility Landing Page -->
+  <section id="landing-page" class="landing-page">
+
+    <!-- Hero Section with Metallic Frame -->
+    <header class="hero-frame">
+      <div class="hero-section">
+
+        <!-- A imagem enviada pelo usuário (Fundo sem botão) -->
+        <div class="hero-image-container">
+          <img src="hero_bg_new.jpg" alt="Kairon Mobility Hero" class="hero-composite-img" />
+
+          <!-- Botão funcional (Imagem separada com efeitos) -->
+          <a href="#reserva" class="hero-btn-overlay" aria-label="Reserve Agora">
+            <img src="btn_reserve_new.png" alt="Reserve Agora" class="btn-image-src" />
+          </a>
+        </div>
+
+      </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features-section">
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+            <path d="M8 7h8v6H8zM12 18h.01" />
+          </svg>
+        </div>
+        <h4>RESERVA SIMPLIFICADA</h4>
+        <p>Agende seu EV em minutos pelo app ou site, com confirmação imediata.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+            <path d="M9 11l3 3 6-6M12 18h.01" />
+          </svg>
+        </div>
+        <h4>RETIRADA CONTACTLESS</h4>
+        <p>Use seu smartphone para desbloquear o veículo e iniciar sua jornada.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            <path d="M9 12l2 2 4-4" />
+          </svg>
+        </div>
+        <h4>SEGURO TOTAL INCLUÍDO</h4>
+        <p>Proteção completa contra danos e terceiros para sua paz de espírito.</p>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section class="how-it-works-section">
+      <h3 class="section-title">COMO FUNCIONA</h3>
+      <div class="steps-container">
+        <div class="step-card">
+          <img src="step_1.jpg" alt="Escolha seu carro" class="step-img">
+        </div>
+        <div class="step-card">
+          <img src="step_2.jpg" alt="Reserve online" class="step-img">
+        </div>
+        <div class="step-card">
+          <img src="step_3.jpg" alt="Recolha e dirija" class="step-img">
+        </div>
+        <div class="step-card">
+          <img src="step_4.jpg" alt="Devolução fácil" class="step-img">
+        </div>
+      </div>
+    </section>
+
+    <!-- Fleet & Benefits Section -->
+    <section class="fleet-benefits-section">
+      <div class="fleet-container">
+        <h2 class="section-title">FROTA E VANTAGENS</h2>
+        <div class="benefits-grid">
+          <div class="benefit-card">
+            <img src="benefit_1.jpg" alt="Carregamento Fácil" class="benefit-img">
+          </div>
+          <div class="benefit-card">
+            <img src="benefit_2.jpg" alt="Flexibilidade" class="benefit-img">
+          </div>
+          <div class="benefit-card">
+            <img src="benefit_3.jpg" alt="Frota Premium" class="benefit-img">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Explanatory Section -->
+    <section class="explanatory-section">
+      <h2 class="section-title">POR QUE ESCOLHER ELÉTRICO?</h2>
+      <div class="explanatory-container">
+        <div class="expl-card">
+          <div class="expl-icon-svg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#B89F70" stroke-width="1.5">
+              <path d="M12 2L9.5 6.5L4.5 7L8 10.5L7 15.5L12 13L17 15.5L16 10.5L19.5 7L14.5 6.5L12 2Z" />
+            </svg>
+          </div>
+          <h4>Sustentabilidade</h4>
+          <p>Zero emissões de CO2, contribuindo diretamente para a preservação ambiental.</p>
+        </div>
+        <div class="expl-card">
+          <div class="expl-icon-svg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#B89F70" stroke-width="1.5">
+              <path d="M12 1v22M5 12h14M7 7l10 10M17 7L7 10" />
+            </svg>
+          </div>
+          <h4>Economia Real</h4>
+          <p>Custo por km rodado até 80% menor do que veículos a combustão fóssil.</p>
+        </div>
+        <div class="expl-card">
+          <div class="expl-icon-svg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#B89F70" stroke-width="1.5">
+              <path
+                d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0016.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 002 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z" />
+            </svg>
+          </div>
+          <h4>Saúde Pública</h4>
+          <p>Redução drástica da poluição sonora e melhora na qualidade do ar nas cidades.</p>
+        </div>
+        <div class="expl-card">
+          <div class="expl-icon-svg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#B89F70" stroke-width="1.5">
+              <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z" />
+            </svg>
+          </div>
+          <h4>Performance</h4>
+          <p>Torque instantâneo e uma experiência de condução silenciosa e ultra suave.</p>
+        </div>
+        <div class="expl-card">
+          <div class="expl-icon-svg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#B89F70" stroke-width="1.5">
+              <path d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z" />
+            </svg>
+          </div>
+          <h4>Tecnologia</h4>
+          <p>Acesso aos sistemas de assistência e entretenimento mais modernos do mercado.</p>
+        </div>
+        <div class="expl-card">
+          <div class="expl-icon-svg">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#B89F70" stroke-width="1.5">
+              <path d="M12 22s-8-4.5-8-11.8A8 8 0 0112 2a8 8 0 018 8.2c0 7.3-8 11.8-8 11.8z" />
+              <circle cx="12" cy="10" r="3" />
+            </svg>
+          </div>
+          <h4>Conveniência</h4>
+          <p>Vantagens como estacionamento preferencial e isenções em diversas cidades.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section class="impact-section">
+      <div class="impact-container">
+        <div class="impact-content">
+          <h2 class="impact-title">IMPACTO POSITIVO</h2>
+          <p class="impact-text">
+            <strong>Carros Elétricos:</strong> Emitem zero CO₂, monóxido de carbono, óxidos de nitrogênio e outros
+            poluentes diretamente durante a condução.
+          </p>
+          <div class="counter-box">
+            <span class="counter-label">CO₂ PREVENIDO PELA FROTA KAIRON:</span>
+            <div id="co2-counter" class="counter-value">0</div>
+            <span class="counter-unit">Kg de CO₂</span>
+          </div>
+        </div>
+        <div class="impact-video-wrapper">
+          <video autoplay muted loop playsinline class="impact-video">
+            <source src="Untitled design.mp4" type="video/mp4">
+            Seu navegador não suporta vídeos.
+          </video>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+      <h2 class="section-title">DEPOIMENTOS</h2>
+      <div class="testimonials-carousel">
+        <div class="testimonials-track">
+          <!-- Originais -->
+          <div class="testimonial-card">
+            <p>"Experiência incrível. O BYD Dolphin é silencioso e muito potente. Atendimento impecável."</p>
+            <small>- João Silva</small>
+          </div>
+          <div class="testimonial-card">
+            <p>"Kairon Mobility mudou minha perspectiva sobre EVs."</p>
+            <small>- Carlos Eduardo</small>
+          </div>
+          <!-- Novos -->
+          <div class="testimonial-card">
+            <p>"Alugar o BYD Seal foi a melhor decisão. Tecnologia de ponta e autonomia surpreendente."</p>
+            <small>- Ricardo Lima</small>
+          </div>
+          <div class="testimonial-card">
+            <p>"O atendimento da Kairon é diferenciado. Tudo rápido e sem burocracia."</p>
+            <small>- Mariana Costa</small>
+          </div>
+          <div class="testimonial-card">
+            <p>"Perfeito para viagens curtas no final de semana. Sustentabilidade com estilo."</p>
+            <small>- Pedro Santos</small>
+          </div>
+          <div class="testimonial-card">
+            <p>"O silêncio do carro elétrico é relaxante. Nunca mais volto para o motor a combustão."</p>
+            <small>- Ana Oliveira</small>
+          </div>
+          <div class="testimonial-card">
+            <p>"Economizei muito no combustível. O custo-benefício é imbatível."</p>
+            <small>- Lucas Ferreira</small>
+          </div>
+          <div class="testimonial-card">
+            <p>"A frota é impecável. Carros limpos, carregados e prontos para rodar."</p>
+            <small>- Beatriz Souza</small>
+          </div>
+          <!-- Clones para Loop Infinito Perfeito -->
+          <div class="testimonial-card">
+            <p>"Experiência incrível. O BYD Dolphin é silencioso e muito potente. Atendimento impecável."</p>
+            <small>- João Silva</small>
+          </div>
+          <div class="testimonial-card">
+            <p>"Kairon Mobility mudou minha perspectiva sobre EVs."</p>
+            <small>- Carlos Eduardo</small>
+          </div>
+          <div class="testimonial-card">
+            <p>"Alugar o BYD Seal foi a melhor decisão. Tecnologia de ponta e autonomia surpreendente."</p>
+            <small>- Ricardo Lima</small>
+          </div>
+          <div class="testimonial-card">
+            <p>"O atendimento da Kairon é diferenciado. Tudo rápido e sem burocracia."</p>
+            <small>- Mariana Costa</small>
+          </div>
+          <div class="testimonial-card">
+            <p>"Perfeito para viagens curtas no final de semana. Sustentabilidade com estilo."</p>
+            <small>- Pedro Santos</small>
+          </div>
+          <div class="testimonial-card">
+            <p>"O silêncio do carro elétrico é relaxante. Nunca mais volto para o motor a combustão."</p>
+            <small>- Ana Oliveira</small>
+          </div>
+          <div class="testimonial-card">
+            <p>"Economizei muito no combustível. O custo-benefício é imbatível."</p>
+            <small>- Lucas Ferreira</small>
+          </div>
+          <div class="testimonial-card">
+            <p>"A frota é impecável. Carros limpos, carregados e prontos para rodar."</p>
+            <small>- Beatriz Souza</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <img src="favicon.jpg" alt="Kairon Mobility" class="footer-logo-white">
+          <h2>KAIRON MOBILITY</h2>
+        </div>
+
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>CONTATO</h4>
+            <p>WhatsApp: +55 61 9882-0061</p>
+            <p>Email: contato@kaironmobility.com.br</p>
+            <p>Brasília, DF</p>
+          </div>
+          <div class="footer-column">
+            <h4>SIGA-NOS</h4>
+            <div class="footer-socials">
+              <a href="#" class="social-link">Instagram</a>
+              <a href="#" class="social-link">Facebook</a>
+              <a href="https://wa.me/556198820061" target="_blank" class="social-link">WhatsApp</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Kairon Mobility. Todos os direitos reservados. Experimente o futuro da mobilidade elétrica agora
+          em Brasília.</p>
+      </div>
+    </footer>
+
+  </section>
+
+  <script src="main.js"></script>
+</body>
+
+</html>

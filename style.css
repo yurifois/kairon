@@ -1,0 +1,867 @@
+/* =====================================================
+   KAIRON MOBILITY - PREMIUM DARK THEME
+   ===================================================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+  overflow-x: hidden;
+}
+
+/* =====================================================
+   SCROLL VIDEO ANIMATION
+   ===================================================== */
+
+.video-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  overflow: hidden;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  background-color: #000;
+}
+
+#scroll-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+#main-content {
+  height: 500vh;
+  pointer-events: none;
+}
+
+.landing-page {
+  position: relative;
+  z-index: 10;
+  background-color: #0D1612; /* Verde escuro profundo */
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.8s ease-out;
+}
+
+.landing-page.visible {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* =====================================================
+   SCROLL INDICATOR (3D Silver Effect)
+   ===================================================== */
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 100;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.scroll-text {
+  font-size: 0.85rem;
+  font-weight: 900;
+  letter-spacing: 4px;
+  margin-bottom: 15px;
+  text-transform: uppercase;
+  /* Efeito Prata 3D em Alto Relevo */
+  color: #E0E0E0;
+  background: linear-gradient(to bottom, #ffffff 0%, #a1a1a1 50%, #454545 51%, #a1a1a1 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 1px rgba(255,255,255,0.8));
+  text-shadow: 
+    0 1px 0 #bbb,
+    0 2px 0 #999,
+    0 3px 0 #888,
+    0 5px 5px rgba(0,0,0,0.5);
+}
+
+.scroll-arrow {
+  width: 40px;
+  height: 40px;
+  color: #fff;
+  /* Replicando o efeito prata no SVG */
+  filter: drop-shadow(0 2px 0 #999) drop-shadow(0 4px 5px rgba(0,0,0,0.5));
+  animation: bounceArrow 2s infinite;
+}
+
+@keyframes bounceArrow {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-10px); }
+  60% { transform: translateY(-5px); }
+}
+
+/* =====================================================
+   HERO SECTION - 16:9 FULL WIDTH
+   ===================================================== */
+
+.hero-frame {
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+  position: relative;
+}
+
+.hero-section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.hero-image-container {
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Força o formato 16:9 */
+  position: relative;
+  overflow: visible; /* Permitir que o botão desça para a área preta */
+  line-height: 0;
+}
+
+.hero-composite-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Garante que a imagem preencha o 16:9 */
+  display: block;
+}
+
+/* A LINHA METÁLICA DECORATIVA (Margem interna flutuante) */
+.hero-image-container::after {
+  content: '';
+  position: absolute;
+  top: 3%;
+  left: 3%;
+  right: 3%;
+  bottom: 3%;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 12px;
+  pointer-events: none;
+  z-index: 5;
+  box-shadow: 0 0 10px rgba(255,255,255,0.1);
+}
+
+/* Botão de imagem funcional */
+.hero-btn-overlay {
+  position: absolute;
+  bottom: -45px; /* Arrastado para a área preta (asfalto) abaixo do texto */
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  max-width: 35%;
+  z-index: 10;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-decoration: none;
+  overflow: hidden;
+  border-radius: 12px;
+  line-height: 0;
+  /* Máscara para que o brilho apareça APENAS sobre o desenho do botão, removendo a "lâmina" transparente */
+  -webkit-mask-image: url('btn_reserve_new.png');
+  mask-image: url('btn_reserve_new.png');
+  -webkit-mask-size: contain;
+  mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
+}
+
+.btn-image-src {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* O efeito de brilho metálico (Shine) que atravessa o botão */
+.hero-btn-overlay::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  transition: all 0.8s ease-in-out;
+  transform: skewX(-25deg);
+  z-index: 2;
+}
+
+.hero-btn-overlay:hover {
+  transform: translateX(-50%) scale(1.05);
+  /* Brilho externo sutil apenas ao redor da forma do botão */
+  filter: drop-shadow(0 0 8px rgba(184, 159, 112, 0.4));
+}
+
+.hero-btn-overlay:hover::before {
+  left: 150%;
+}
+
+/* =====================================================
+   FEATURES SECTION
+   ===================================================== */
+
+.features-section {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  padding: 100px 24px;
+  max-width: 100%;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  /* Nova imagem de fundo do showroom */
+  background-image: linear-gradient(rgba(13, 22, 18, 0.85), rgba(13, 22, 18, 0.85)), url('features_bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Efeito parallax suave */
+}
+
+.feature-card {
+  flex: 1;
+  min-width: 280px;
+  max-width: 350px;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  padding: 40px 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  text-align: center;
+  transition: all 0.4s ease;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+}
+
+/* Removido atrasos de animação pois a flutuação agora é apenas no hover */
+
+@keyframes floating {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+
+.feature-card:hover {
+  transform: translateY(-20px) scale(1.02);
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #B89F70;
+}
+
+.feature-icon {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 15px;
+  color: #B89F70;
+}
+
+.feature-card h4 {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 8px;
+  letter-spacing: 1px;
+}
+
+.feature-card p {
+  font-size: 0.75rem;
+  color: #aaa;
+  line-height: 1.4;
+}
+
+/* =====================================================
+   EXPLANATORY SECTION
+   ===================================================== */
+
+.explanatory-section {
+  padding: 120px 24px;
+  background-image: linear-gradient(rgba(13, 22, 18, 0.85), rgba(13, 22, 18, 0.85)), url('explanatory_bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  text-align: center;
+}
+
+.explanatory-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.expl-card {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  padding: 40px 30px;
+  border-radius: 24px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.4s ease;
+  cursor: default;
+  text-align: left;
+}
+
+.expl-icon-svg {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 20px;
+  color: #B89F70;
+}
+
+.expl-icon-svg svg {
+  width: 100%;
+  height: 100%;
+}
+
+.expl-card:hover {
+  transform: translateY(-15px);
+  background: rgba(255, 255, 255, 0.1);
+  border-color: #B89F70;
+  box-shadow: 0 15px 40px rgba(0,0,0,0.4);
+}
+
+.expl-icon {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  display: block;
+}
+
+.expl-card h4 {
+  color: #B89F70;
+  font-size: 1.1rem;
+  margin-bottom: 12px;
+  letter-spacing: 1px;
+}
+
+.expl-card p {
+  color: #ccc;
+  font-size: 0.85rem;
+  line-height: 1.6;
+}
+
+/* =====================================================
+   IMPACT SECTION (Sustainability Counter)
+   ===================================================== */
+
+.impact-section {
+  padding: 100px 24px;
+  background: #0D1612;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+  /* Linha prateada de quebra */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Efeito de Névoa Branca */
+.impact-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.15), transparent 70%);
+  filter: blur(80px);
+  animation: mistMovement 15s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 1;
+}
+
+@keyframes mistMovement {
+  0% { transform: translate(-10%, -10%) scale(1); }
+  100% { transform: translate(10%, 10%) scale(1.2); }
+}
+
+.impact-container {
+  display: flex;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 60px;
+  position: relative;
+  z-index: 2; /* Garante que o conteúdo fique sobre a névoa */
+}
+
+.impact-content {
+  flex: 1;
+  text-align: left;
+}
+
+.impact-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: #B89F70;
+  margin-bottom: 30px;
+  letter-spacing: 3px;
+}
+
+.impact-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #ddd;
+  margin-bottom: 40px;
+}
+
+.counter-box {
+  background: rgba(184, 159, 112, 0.1);
+  padding: 30px;
+  border-radius: 20px;
+  border: 1px solid rgba(184, 159, 112, 0.3);
+  display: inline-block;
+}
+
+.counter-label {
+  display: block;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: #B89F70;
+  margin-bottom: 10px;
+}
+
+.counter-value {
+  font-size: 3.5rem;
+  font-weight: 900;
+  color: #fff;
+  font-variant-numeric: tabular-nums;
+}
+
+.counter-unit {
+  font-size: 1rem;
+  color: #999;
+}
+
+.impact-video-wrapper {
+  flex: 1.5;
+  position: relative;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.impact-video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  min-height: 400px;
+}
+
+.impact-video-wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg, #000 0%, transparent 20%);
+  pointer-events: none;
+}
+
+/* =====================================================
+   HOW IT WORKS (Layout Metálico Premium)
+   ===================================================== */
+
+.how-it-works-section {
+  padding: 100px 24px;
+  background-color: #0D1612; /* Agora com o verde escuro profundo */
+  text-align: center;
+  /* Linha prateada de quebra */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.how-it-works-section .section-title {
+  color: #B89F70; /* Dourado para contraste */
+}
+
+/* =====================================================
+   FLEET & BENEFITS SECTION (New)
+   ===================================================== */
+
+.fleet-benefits-section {
+  padding: 120px 24px;
+  /* Opacidade esverdeada profunda com a mesma intensidade solicitada */
+  background: linear-gradient(rgba(13, 22, 18, 0.9), rgba(13, 22, 18, 0.9)), url('fleet_bg.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; 
+  text-align: center;
+  position: relative;
+  /* Linha prateada de quebra */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.fleet-benefits-section .section-title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  letter-spacing: 5px;
+  margin-bottom: 80px;
+  text-transform: uppercase;
+  color: #fff;
+  /* Gradiente de Prata Luminosa / Cromo */
+  background: linear-gradient(
+    to bottom, 
+    #ffffff 0%, 
+    #e0e0e0 40%, 
+    #a1a1a1 50%, 
+    #666666 51%, 
+    #a1a1a1 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  /* Efeito Luminoso (Glow) */
+  filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+  text-shadow: 
+    0 1px 0 #fff,
+    0 0 10px rgba(255, 255, 255, 0.5),
+    0 15px 30px rgba(0,0,0,0.5);
+}
+
+.benefits-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.benefit-card {
+  flex: 0 0 320px; /* Tamanho fixo menor */
+  aspect-ratio: 1/1; 
+  border-radius: 25px; 
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  position: relative; /* Necessário para o posicionamento do raio */
+}
+
+/* O Raio Luminoso (Shine Effect) */
+.benefit-card::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -150%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0) 20%,
+    rgba(255, 255, 255, 0.4) 50%,
+    rgba(255, 255, 255, 0) 80%,
+    transparent
+  );
+  transition: all 0.7s ease;
+  transform: skewX(-25deg);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.benefit-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease;
+  transform: scale(1.15); /* Aumenta a imagem para jogar as bordas pretas para fora do card */
+}
+
+.benefit-card:hover {
+  transform: translateY(-20px) rotateY(10deg) scale(1.05);
+  box-shadow: 0 40px 80px rgba(0,0,0,0.8);
+}
+
+.benefit-card:hover::after {
+  left: 150%; /* Faz o raio percorrer o card no hover */
+}
+
+.benefit-card:hover .benefit-img {
+  transform: scale(1.25); /* Zoom extra no hover mantendo as bordas escondidas */
+}
+
+.steps-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  max-width: 1200px; /* Expandido para mostrar melhor a paisagem das estações */
+  margin: 0 auto;
+  /* Estações de Carregamento como fundo */
+  background-image: linear-gradient(rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.2)), url('charging_stations_bg.png');
+  background-size: cover;
+  background-position: center;
+  padding: 80px 40px;
+  border-radius: 30px;
+  box-shadow: 0 30px 70px rgba(0,0,0,0.4);
+  border: 1px solid rgba(255,255,255,0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+.step-card {
+  flex: 1;
+  background: none; /* Imagens já têm fundo */
+  padding: 0;
+  border-radius: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  border: none;
+  /* Sombra constante por baixo */
+  box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+  overflow: hidden;
+}
+
+.step-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.step-card:hover {
+  /* Efeito flutuante */
+  transform: translateY(-20px) scale(1.05);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.5);
+}
+
+.step-card:hover .step-img {
+  transform: scale(1.1);
+}
+
+.step-icon {
+  width: 45px;
+  height: 45px;
+  margin-bottom: 20px;
+  color: #B89F70; /* Ícones dourados */
+  transition: transform 0.3s ease;
+}
+
+.step-card:hover .step-icon {
+  transform: scale(1.1);
+  color: #fff;
+}
+
+.step-card h4 {
+  font-size: 0.85rem;
+  font-weight: 800;
+  color: #B89F70; /* Texto dourado */
+  letter-spacing: 1.5px;
+  line-height: 1.3;
+  text-transform: uppercase;
+}
+
+/* =====================================================
+   TESTIMONIALS
+   ===================================================== */
+
+/* =====================================================
+   TESTIMONIALS (Design Original Restaurado + 3D Carousel)
+   ===================================================== */
+
+.testimonials-section {
+  padding: 80px 0; /* Removido padding lateral para o carrossel ocupar tudo */
+  background-color: #0D1612;
+  text-align: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.testimonials-section h2 {
+  font-size: 1.2rem;
+  font-weight: 800;
+  letter-spacing: 3px;
+  margin-bottom: 60px;
+  color: #B89F70;
+  text-transform: uppercase;
+}
+
+.testimonials-carousel {
+  width: 100%;
+  perspective: 1500px;
+  position: relative;
+}
+
+.testimonials-track {
+  display: flex;
+  gap: 30px;
+  width: max-content;
+  padding: 50px 0;
+  animation: testimonialScroll 35s linear infinite;
+}
+
+@keyframes testimonialScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(calc(-380px * 8)); } /* 8 cards (350px + 30px gap) */
+}
+
+.testimonial-card {
+  flex: 0 0 350px;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 40px 30px;
+  border-radius: 20px;
+  border-left: 4px solid #B89F70;
+  text-align: left;
+  transition: all 0.5s ease;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-left: 4px solid #B89F70;
+  
+  transform-style: preserve-3d;
+  transform: rotateY(15deg);
+}
+
+/* Carrossel não para mais no hover */
+.testimonials-track:hover {
+  animation-play-state: running; 
+}
+
+.testimonial-card:hover {
+  transform: rotateY(0deg) scale(1.05);
+  background: rgba(0, 0, 0, 0.6);
+  border-color: #B89F70;
+  z-index: 10;
+}
+
+.testimonial-card p {
+  font-size: 0.95rem;
+  color: #ddd;
+  font-style: italic;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+
+.testimonial-card small {
+  display: block;
+  font-size: 0.85rem;
+  color: #B89F70;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* =====================================================
+   FOOTER
+   ===================================================== */
+
+/* =====================================================
+   FOOTER (Black & White Premium)
+   ===================================================== */
+
+.site-footer {
+  padding: 80px 24px 40px;
+  background-color: #000;
+  color: #fff;
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 60px;
+}
+
+.footer-brand {
+  flex: 1;
+  min-width: 250px;
+}
+
+.footer-logo-white {
+  width: 80px;
+  height: 80px;
+  margin-bottom: 20px;
+  border-radius: 15px;
+  opacity: 1;
+}
+
+.footer-brand h2 {
+  font-size: 1.5rem;
+  letter-spacing: 3px;
+  color: #fff;
+  font-weight: 800;
+}
+
+.footer-links {
+  display: flex;
+  gap: 80px;
+  flex-wrap: wrap;
+}
+
+.footer-column h4 {
+  font-size: 0.9rem;
+  color: #B89F70;
+  margin-bottom: 25px;
+  letter-spacing: 2px;
+}
+
+.footer-column p, .footer-column a {
+  font-size: 0.85rem;
+  color: #999;
+  line-height: 1.8;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 10px;
+  transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: #fff;
+}
+
+.footer-socials {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-bottom {
+  margin-top: 80px;
+  padding-top: 30px;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  text-align: center;
+}
+
+.footer-bottom p {
+  font-size: 0.75rem;
+  color: #555;
+}
+
+@media (max-width: 768px) {
+  .features-section, .steps-container, .testimonials-container, .footer-content {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .footer-links {
+    gap: 40px;
+    justify-content: center;
+  }
+  .hero-image-container {
+    aspect-ratio: 4 / 3;
+  }
+}

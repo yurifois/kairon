@@ -1,0 +1,14 @@
+{
+  "name": "kairon-mobility",
+  "version": "1.0.0",
+  "description": "Kairon Mobility Landing Page",
+  "main": "main.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0"
+  }
+}
