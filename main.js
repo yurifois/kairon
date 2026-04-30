@@ -151,4 +151,20 @@ document.addEventListener('DOMContentLoaded', () => {
   if (co2Counter) {
     observer.observe(co2Counter);
   }
+
+  // ── Suporte Touch para Cards (Efeito LED) ──
+  const cards = document.querySelectorAll('.step-card, .benefit-card');
+  cards.forEach(card => {
+    card.addEventListener('touchstart', () => {
+      card.classList.add('touch-hover');
+    }, { passive: true });
+    
+    card.addEventListener('touchend', () => {
+      setTimeout(() => card.classList.remove('touch-hover'), 500);
+    }, { passive: true });
+    
+    card.addEventListener('touchcancel', () => {
+      card.classList.remove('touch-hover');
+    }, { passive: true });
+  });
 });
