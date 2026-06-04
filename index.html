@@ -12,46 +12,44 @@
 
 <body>
 
-  <!-- Background video container -->
-  <div class="video-container" id="video-container">
-    <video id="scroll-video" muted playsinline preload="auto">
-      <source src="scroll-video.mp4" type="video/mp4">
-      Seu navegador não suporta a tag de vídeo.
-    </video>
-
-    <!-- Scroll Down Indicator -->
-    <div class="scroll-indicator">
-      <p class="scroll-text">ARRASTE PARA BAIXO</p>
-      <div class="scroll-arrow">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
-          <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
-        </svg>
-      </div>
-    </div>
-  </div>
-
-  <!-- Scrollable spacer to give room for animation (500vh) -->
-  <section id="main-content"></section>
-
   <!-- Kairon Mobility Landing Page -->
-  <section id="landing-page" class="landing-page">
+  <section id="landing-page" class="landing-page" style="opacity: 1; visibility: visible;">
 
     <!-- Hero Section with Metallic Frame -->
     <header class="hero-frame">
       <div class="hero-section">
-
         <!-- A imagem enviada pelo usuário (Fundo sem botão) -->
         <div class="hero-image-container">
           <img src="hero_bg_new.jpg" alt="Kairon Mobility Hero" class="hero-composite-img" />
-
           <!-- Botão funcional (Imagem separada com efeitos) -->
           <a href="https://wa.me/556198820061?text=Ol%C3%A1%2C%20gostaria%20de%20reservar%20um%20carro" target="_blank" class="hero-btn-overlay" aria-label="Reserve Agora">
             <img src="btn_reserve_new.png" alt="Reserve Agora" class="btn-image-src" />
           </a>
         </div>
-
       </div>
     </header>
+
+    <!-- Scrollable Video Section (500vh) -->
+    <section id="video-section" style="position: relative; height: 500vh;">
+      <div class="video-container" id="video-container" style="position: sticky; top: 0; height: 100vh; z-index: 1;">
+        <video id="scroll-video" muted playsinline preload="auto">
+          <source src="scroll-video.mp4" type="video/mp4">
+          Seu navegador não suporta a tag de vídeo.
+        </video>
+
+        <!-- Scroll Down Indicator -->
+        <div class="scroll-indicator">
+          <p class="scroll-text">ROLE A PÁGINA</p>
+          <div class="scroll-arrow">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+              <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
 
     <!-- Features Section -->
     <section class="features-section">
@@ -134,6 +132,10 @@
               <img src="benefit_3.jpg" alt="Frota Premium" class="benefit-img">
             </div>
           </div>
+        </div>
+
+        <div class="fleet-action-container" style="margin-top: 60px; display: flex; justify-content: center; position: relative; z-index: 10;">
+          <a href="modelos.html" class="btn-ver-modelos">CONHEÇA NOSSOS MODELOS</a>
         </div>
       </div>
     </section>

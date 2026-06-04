@@ -104,9 +104,9 @@ body {
 }
 
 @keyframes bounceArrow {
-  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-10px); }
-  60% { transform: translateY(-5px); }
+  0% { transform: translateY(0) scale(1); opacity: 0.6; filter: drop-shadow(0 2px 0 #999) drop-shadow(0 0px 5px rgba(255,255,255,0)); }
+  50% { transform: translateY(15px) scale(1.1); opacity: 1; filter: drop-shadow(0 2px 0 #999) drop-shadow(0 5px 15px rgba(255,255,255,0.6)); }
+  100% { transform: translateY(0) scale(1); opacity: 0.6; filter: drop-shadow(0 2px 0 #999) drop-shadow(0 0px 5px rgba(255,255,255,0)); }
 }
 
 /* =====================================================
@@ -914,4 +914,190 @@ body {
   .hero-image-container {
     aspect-ratio: 4 / 3;
   }
+}
+
+/* =====================================================
+   MODELOS PAGE SPECIFIC STYLES
+   ===================================================== */
+
+/* O fundo estático da página inteira usando a imagem anexada */
+.modelos-page {
+  background: #0D1612 url('modelos_bg.jpg') no-repeat center center fixed;
+  background-size: cover;
+  color: #fff;
+  margin: 0;
+}
+
+.modelos-header {
+  padding: 30px 24px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  background: rgba(0,0,0,0.5);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.btn-voltar {
+  display: inline-flex;
+  align-items: center;
+  color: #B89F70;
+  text-decoration: none;
+  font-weight: 600;
+  gap: 8px;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+.btn-voltar svg {
+  width: 20px;
+  height: 20px;
+}
+
+.btn-voltar:hover {
+  color: #fff;
+  transform: translateX(-5px);
+}
+
+.modelos-title-container {
+  flex: 1;
+  text-align: center;
+}
+
+.modelos-main-title {
+  color: #B89F70;
+  font-size: 1.8rem;
+  letter-spacing: 4px;
+  margin: 0;
+}
+
+/* A seção tem bastante altura para permitir que o usuário faça o scroll */
+.scroll-model-section {
+  position: relative;
+  height: 400vh; /* Permite rolar por 4 telas */
+}
+
+/* A seção placeholder será menor já que não tem animação de scroll ainda */
+.placeholder-section {
+  height: 100vh;
+}
+
+/* O container do canvas ficará "grudado" na tela enquanto rolamos a section */
+.scroll-model-section .canvas-container {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* O canvas vai se adaptar ao tamanho da tela */
+.scroll-model-section canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* ou cover, dependendo de como as imagens foram feitas */
+  display: block;
+}
+
+/* Informações do carro flutuando */
+.sticky-info {
+  position: absolute;
+  z-index: 10;
+  background: rgba(13, 22, 18, 0.7);
+  backdrop-filter: blur(8px);
+  padding: 30px;
+  border-radius: 15px;
+  border-left: 4px solid #B89F70;
+  max-width: 400px;
+  pointer-events: none; /* Para não bloquear o scroll ou toque */
+}
+
+/* Card da esquerda: Posição inicial (vai subir via JS) */
+.left-card {
+  bottom: 10%;
+  left: 5%;
+}
+
+/* Card da direita: Posição fixa */
+.right-card {
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+}
+
+.sticky-info h2 {
+  color: #B89F70;
+  font-size: 2rem;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+}
+
+.sticky-info p {
+  color: #ddd;
+  line-height: 1.6;
+  font-size: 1rem;
+}
+
+.placeholder-car {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.5);
+}
+
+.placeholder-car p {
+  font-size: 2rem;
+  color: #B89F70;
+  letter-spacing: 3px;
+  font-weight: 700;
+}
+
+/* =====================================================
+   BUTTONS (Modelos)
+   ===================================================== */
+.btn-ver-modelos {
+  display: inline-block;
+  padding: 18px 40px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #000;
+  background: linear-gradient(135deg, #B89F70, #DFCAA0);
+  text-decoration: none;
+  border-radius: 50px;
+  letter-spacing: 2px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 20px rgba(184, 159, 112, 0.3);
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.btn-ver-modelos::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+  transition: all 0.6s ease;
+  z-index: -1;
+}
+
+.btn-ver-modelos:hover {
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 15px 30px rgba(184, 159, 112, 0.5);
+  color: #000;
+}
+
+.btn-ver-modelos:hover::before {
+  left: 100%;
 }

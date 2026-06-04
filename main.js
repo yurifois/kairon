@@ -1,7 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   const video = document.getElementById('scroll-video');
   const videoContainer = document.getElementById('video-container');
-  const mainContent = document.getElementById('main-content');
+  const videoSection = document.getElementById('video-section');
   const landingPage = document.querySelector('.landing-page');
 
   // ── Variáveis para interpolação suave (Lerp) ──
@@ -25,14 +25,21 @@ document.addEventListener('DOMContentLoaded', () => {
     requestAnimationFrame(updateVideoProgress);
   }
 
-  // ── Atualiza o targetScroll com base no scroll do mouse ──
+  // ── Atualiza o targetScroll com base no scroll do mouse na seção ──
   window.addEventListener('scroll', () => {
-    const scrollHeight = mainContent.scrollHeight - window.innerHeight;
-    if (scrollHeight <= 0) return;
+    if (!videoSection) return;
 
-    let scrollFraction = window.scrollY / scrollHeight;
-    scrollFraction = Math.max(0, Math.min(1, scrollFraction));
-    targetScroll = scrollFraction;
+    const rect = videoSection.getBoundingClientRect();
+    const maxScroll = rect.height - window.innerHeight;
+    const scrollPosition = -rect.top;
+
+    if (scrollPosition >= 0 && scrollPosition <= maxScroll) {
+      targetScroll = scrollPosition / maxScroll;
+    } else if (scrollPosition > maxScroll) {
+      targetScroll = 1;
+    } else if (scrollPosition < 0) {
+      targetScroll = 0;
+    }
   });
 
   // ── Função de interpolação linear ──
@@ -54,7 +61,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 3. Controlando o Tempo do Vídeo
     if (video.duration) {
-      const targetTime = effectiveScroll * (video.duration - 0.05);
+      // Skip first 1 second to avoid black screen at start
+      const startTimeOffset = 1.0;
+      const targetTime = startTimeOffset + effectiveScroll * (video.duration - startTimeOffset - 0.05);
       if (targetTime >= 0 && targetTime <= video.duration) {
         video.currentTime = targetTime;
       }
@@ -91,12 +100,7 @@ document.addEventListener('DOMContentLoaded', () => {
       videoContainer.style.visibility = 'visible';
     }
 
-    // 5. Mostrar a página de destino quando o vídeo terminar (nos últimos 20% do scroll)
-    if (effectiveScroll > 0.8) {
-      landingPage.classList.add('visible');
-    } else {
-      landingPage.classList.remove('visible');
-    }
+    // 5. Landing page agora é visível por padrão na ordem do documento
 
     // 6. Fade out do Scroll Indicator
     const scrollIndicator = document.querySelector('.scroll-indicator');
